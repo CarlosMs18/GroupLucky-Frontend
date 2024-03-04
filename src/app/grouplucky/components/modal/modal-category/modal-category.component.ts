@@ -2,7 +2,9 @@ import { Component, Inject, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { CategoriesService } from 'src/app/core';
+import { CategoryI } from 'src/app/core/src/models/category/category.model';
 import { GetCategoryAll } from 'src/app/core/src/models/category/getCategoryAll.model';
+import { UtilitiesService } from 'src/app/core/src/services/public/utilities.service';
 
 @Component({
   selector: 'app-modal-category',
@@ -19,6 +21,7 @@ export class ModalCategoryComponent implements OnInit {
     @Inject(MAT_DIALOG_DATA) public datosCategory: GetCategoryAll,
     private fb :FormBuilder,
     private _categoryService : CategoriesService,
+    private _utilitiesService : UtilitiesService
   ) {
     this.formularioCategory = this.fb.group(
       {
@@ -32,8 +35,25 @@ export class ModalCategoryComponent implements OnInit {
   }
 
 
-  saveProduct(){
+  saveCategory(){
 
+    const _category :CategoryI = {
+      id : this.datosCategory == null ? 0  : this.datosCategory.id,
+      name : this.formularioCategory.value.name,
+      description : this.formularioCategory.value.description
+    }
+    this._categoryService.createCategory(_category).subscribe({
+      next:(data : any) => {
+          console.log(data)
+          if(data.success){
+            this._utilitiesService.mostrarAlerta("La categoria fue agregado con exito","Exito");
+          }
+          else{
+            this._utilitiesService.mostrarAlerta("Error al agregar una categoria","Error");
+          }
+      },
+      error : (e) => {}
+    })
   }
 
 

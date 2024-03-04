@@ -45,6 +45,8 @@ export class CategoryListComponent implements OnInit, AfterViewInit {
   AddCategory(){
     this.dialog.open(ModalCategoryComponent,{
       disableClose : true
+    }).afterClosed().subscribe(response => {
+      if(response == "true") this.getCategoryAll();
     })
   }
 }
