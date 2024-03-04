@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { Product } from '../../models/product/product.model';
+import { CreateProduct } from '../../models/product/create-product.model';
 
 const API_PRODUCTS_URL = `${environment.apiUrl}/Product`;
 @Injectable({
@@ -16,5 +17,9 @@ export class ProductsService {
 
   getProductAll(): Observable<Product[]>{
     return this.http.get<Product[]>(`${API_PRODUCTS_URL}/GetProductsAll`);
+  }
+
+  createProduct(product : CreateProduct){
+    return this.http.post(`${API_PRODUCTS_URL}/ProductSave`,product);
   }
 }

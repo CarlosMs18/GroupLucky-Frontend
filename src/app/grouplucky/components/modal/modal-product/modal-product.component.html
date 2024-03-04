@@ -1,1 +1,78 @@
-<p>modal-product works!</p>
+<h2 mat-dialog-title>{{tituloAccion}} Product</h2>
+
+<mat-dialog-content>
+    <form [formGroup]="formularioProducto">
+
+        <mat-grid-list cols="1" rowHeight="80px">
+            <!--le diremos que slo tendra 1 columna y el alto por fila sera de 80px-->
+            <mat-grid-tile>
+                <mat-form-field appearance="outline">
+                    <mat-label>Name</mat-label>
+                    <input matInput autocomplete="off" formControlName="name">
+                    <mat-icon matSuffix>fit_screen</mat-icon>
+                </mat-form-field>
+            </mat-grid-tile>
+
+            <mat-grid-tile>
+              <mat-form-field appearance="outline">
+                  <mat-label>Code</mat-label>
+                  <input matInput autocomplete="off" formControlName="code">
+                  <mat-icon matSuffix>fit_screen</mat-icon>
+              </mat-form-field>
+          </mat-grid-tile>
+
+          <mat-grid-tile>
+            <mat-form-field appearance="outline">
+                <mat-label>Stock Mínimo</mat-label>
+                <input matInput autocomplete="off" type="number" formControlName="stockMin">
+                <mat-icon matSuffix>fit_screen</mat-icon>
+            </mat-form-field>
+        </mat-grid-tile>
+
+        <mat-grid-tile>
+          <mat-form-field appearance="outline">
+              <mat-label>Stock Máximo</mat-label>
+              <input matInput autocomplete="off" type="number"  formControlName="stockMax">
+              <mat-icon matSuffix>fit_screen</mat-icon>
+          </mat-form-field>
+      </mat-grid-tile>
+
+      <mat-grid-tile>
+        <mat-form-field appearance="outline">
+            <mat-label>Precio Unitario</mat-label>
+            <input matInput autocomplete="off" type="number"  formControlName="unitSalePrice">
+            <mat-icon matSuffix>fit_screen</mat-icon>
+        </mat-form-field>
+    </mat-grid-tile>
+
+    <mat-grid-tile>
+      <mat-form-field appearance="outline">
+          <mat-label>Categoria</mat-label>
+
+          <mat-select formControlName="categoria">
+              <mat-option *ngFor="let item of categoriesList" [value]="item.id">
+                  {{item.name}}
+              </mat-option>
+
+          </mat-select>
+      </mat-form-field>
+  </mat-grid-tile>
+
+
+
+        </mat-grid-list>
+
+    </form>
+</mat-dialog-content>
+
+
+<mat-dialog-actions align="end"> <!--para que s epueda ainear al final-->
+    <button mat-raised-button mat-dialog-close color="warn">
+        Volver
+    </button>
+
+    <button mat-raised-button color="primary" [disabled]="formularioProducto.invalid"
+        (click)="saveProduct()">
+        {{botonAccion}}
+    </button>
+</mat-dialog-actions>

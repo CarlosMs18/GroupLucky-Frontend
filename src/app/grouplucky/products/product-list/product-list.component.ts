@@ -1,9 +1,11 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { ProductsService } from 'src/app/core';
 import { Product } from 'src/app/core/src/models/product/product.model';
+import { ModalProductComponent } from '../../components/modal/modal-product/modal-product.component';
 
 @Component({
   selector: 'app-product-list',
@@ -18,7 +20,8 @@ export class ProductListComponent implements OnInit {
   @ViewChild(MatPaginator) paginator!: MatPaginator
   @ViewChild(MatSort) sort!: MatSort;
   constructor(
-    private _productService :ProductsService
+    private _productService :ProductsService,
+    private dialog : MatDialog
   ) { }
 
   ngOnInit(): void {
@@ -33,6 +36,10 @@ export class ProductListComponent implements OnInit {
   }
 
   addProduct(){
-
+    this.dialog.open(ModalProductComponent,{
+      disableClose : true
+    }).afterClosed().subscribe(response => {
+      if(response == "true") this.getProductsAll();
+    })
   }
 }
