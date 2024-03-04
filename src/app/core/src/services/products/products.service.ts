@@ -22,4 +22,8 @@ export class ProductsService {
   createProduct(product : CreateProduct){
     return this.http.post(`${API_PRODUCTS_URL}/ProductSave`,product);
   }
+
+  updateProduct(product : CreateProduct){
+    return this.http.put(`${API_PRODUCTS_URL}/UpdateProduct`,product);
+  }
 }

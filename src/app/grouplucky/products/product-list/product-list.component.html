@@ -44,7 +44,7 @@
   <mat-header-cell *matHeaderCellDef> Acciones </mat-header-cell>
   <mat-cell *matCellDef="let element">
       <mat-icon  mat-icon-button color="primary"  matTooltip="Ver" class="search" fontIcon="search"></mat-icon>
-      <mat-icon mat-icon-button color="basic" matTooltip="Editar" class="edit" fontIcon="edit"></mat-icon>
+      <mat-icon mat-icon-button color="basic" (click)="editProduct(element)" matTooltip="Editar" class="edit" fontIcon="edit"></mat-icon>
       <mat-icon mat-icon-button color="warn" matTooltip="Eliminar" class="delete" fontIcon="delete"></mat-icon>
 
   </mat-cell>

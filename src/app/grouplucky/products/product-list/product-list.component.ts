@@ -42,4 +42,13 @@ export class ProductListComponent implements OnInit {
       if(response == "true") this.getProductsAll();
     })
   }
+
+  editProduct(product : Product){
+    this.dialog.open(ModalProductComponent,{
+      disableClose : true,
+      data : product
+    }).afterClosed().subscribe(resultado => {
+      if(resultado == "true") this.getProductsAll();
+    });
+  }
 }

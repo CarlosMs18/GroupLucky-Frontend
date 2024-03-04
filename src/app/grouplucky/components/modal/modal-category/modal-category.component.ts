@@ -24,6 +24,7 @@ export class ModalCategoryComponent implements OnInit {
   ) {
     this.formularioCategory = this.fb.group(
       {
+
         name : ["", Validators.required],
         description : ["", Validators.required]
       }

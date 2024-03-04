@@ -12,7 +12,7 @@ import { UtilitiesService } from 'src/app/core/src/services/public/utilities.ser
   templateUrl: './modal-product.component.html',
   styleUrls: ['./modal-product.component.css']
 })
-export class ModalProductComponent implements OnInit {
+export class ModalProductComponent implements OnInit{
   formularioProducto  : FormGroup;
 
   tituloAccion:string = "Agregar";
@@ -36,10 +36,25 @@ export class ModalProductComponent implements OnInit {
         categoria : ["",Validators.required]
       }
     )
+
+    this._categoryService.getCategoryAll().subscribe(categories =>{
+      this.categoriesList = categories
+    });
   }
 
   ngOnInit(): void {
-    this._categoryService.getCategoryAll().subscribe(categories => this.categoriesList = categories);
+
+    console.log(this.categoriesList)
+    if(this.datosProduct != null){
+      this.formularioProducto.patchValue({
+        name : this.datosProduct.productName,
+        code : this.datosProduct.code,
+        stockMin : this.datosProduct.stockMin,
+        stockMax : this.datosProduct.stockMax,
+        unitSalePrice : this.datosProduct.unitSalePrice,
+        categoria : this.datosProduct.categoryId
+      })
+    }
   }
 
   saveProduct(){
@@ -64,7 +79,19 @@ export class ModalProductComponent implements OnInit {
       })
     }
     else{
-      console.log('e')
+      this._productService.updateProduct(_product).subscribe({
+        next :(data : any) => {
+          if(data){
+            this._utilitiesService.mostrarAlerta("El producto fue editada","Exito");
+            this.modalActual.close("true") //cerrar y enviar una informacion alboton que abrio el modal
+          }
+          else{
+            this._utilitiesService.mostrarAlerta("No se pudo editar el producto","Error");
+          }
+        },
+        error :(e) => {}
+      })
+
     }
   }
 }
