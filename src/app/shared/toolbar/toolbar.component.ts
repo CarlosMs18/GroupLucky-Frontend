@@ -21,8 +21,5 @@ export class ToolbarComponent implements OnInit {
     { column1: 'Dato 2-1', column2: 'Dato 2-2' },
     { column1: 'Dato 3-1', column2: 'Dato 3-2' }
   ];
-  performSearch(searchTerm: string) {
-    // Lógica para realizar la búsqueda con el término proporcionado
-    console.log('Realizando búsqueda con el término:', searchTerm);
-  }
+
 }

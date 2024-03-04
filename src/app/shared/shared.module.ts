@@ -19,7 +19,11 @@ import { RouterModule } from '@angular/router';
     NavListComponent
   ],
   exports:[
-    ToolbarComponent
+    ToolbarComponent,
+    SidenavComponent,
+    SearchFieldComponent,
+    TableComponent,
+    NavListComponent
   ],
   imports: [
     CommonModule,

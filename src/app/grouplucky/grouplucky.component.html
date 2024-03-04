@@ -1,11 +1,11 @@
 <mat-toolbar color="primary">
-  <button mat-icon-button>
+  <button mat-icon-button (click)="toggleSidebar()">
     <mat-icon>menu</mat-icon>
   </button>
   <span>Título del Dashboard</span>
 </mat-toolbar>
 
-<!-- <mat-sidenav-container class="sidenav-container">
+<mat-sidenav-container class="sidenav-container">
   <mat-sidenav #sidenav mode="side" [(opened)]="mostrarSidebar">
     <app-nav-list></app-nav-list>
   </mat-sidenav>
@@ -15,7 +15,7 @@
       <app-search-field (search)="performSearch($event)"></app-search-field>
       <h2>Contenido Principal</h2>
       <app-table [dataSource]="dataSource"></app-table>
-     <router-outlet></router-outlet>
+      <router-outlet></router-outlet>
     </div>
   </mat-sidenav-content>
-</mat-sidenav-container> -->
+</mat-sidenav-container>
