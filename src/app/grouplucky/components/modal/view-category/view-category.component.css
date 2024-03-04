@@ -1,0 +1,19 @@
+.custom-card {
+  width: 400px; /* Ancho personalizado */
+  height: 250px; /* Altura personalizada */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.card-content {
+  text-align: center;
+  flex-grow: 1;
+}
+
+.card-actions {
+  align-self: flex-start;
+  margin-left: 10px; /* Espacio entre el botón y el borde izquierdo */
+  margin-bottom: 10px; /* Espacio entre el botón y el borde inferior */
+}

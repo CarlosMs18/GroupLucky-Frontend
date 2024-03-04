@@ -9,6 +9,8 @@ import { GroupLuckyRoutingModule } from './grouplucky-routing.module';
 import { ModalProductComponent } from './components/modal/modal-product/modal-product.component';
 import { ModalCategoryComponent } from './components/modal/modal-category/modal-category.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ViewCategoryComponent } from './components/modal/view-category/view-category.component';
+
 
 
 
@@ -18,7 +20,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     ProductListComponent,
     GroupluckyComponent,
     ModalProductComponent,
-    ModalCategoryComponent
+    ModalCategoryComponent,
+    ViewCategoryComponent
   ],
   imports: [
     CommonModule,

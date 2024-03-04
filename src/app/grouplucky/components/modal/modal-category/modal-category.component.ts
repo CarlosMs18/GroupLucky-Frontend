@@ -3,7 +3,6 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { CategoriesService } from 'src/app/core';
 import { CategoryI } from 'src/app/core/src/models/category/category.model';
-import { GetCategoryAll } from 'src/app/core/src/models/category/getCategoryAll.model';
 import { UtilitiesService } from 'src/app/core/src/services/public/utilities.service';
 
 @Component({
@@ -71,11 +70,11 @@ export class ModalCategoryComponent implements OnInit {
       this._categoryService.updateCategory(_category).subscribe({
         next :(data : any) => {
           if(data){
-            this._utilitiesService.mostrarAlerta("El producto fue editado","Exito");
+            this._utilitiesService.mostrarAlerta("La categoria fue editada","Exito");
             this.modalActual.close("true") //cerrar y enviar una informacion alboton que abrio el modal
           }
           else{
-            this._utilitiesService.mostrarAlerta("No se pudo editar el producto","Error");
+            this._utilitiesService.mostrarAlerta("No se pudo editar la categoria","Error");
           }
         },
         error :(e) => {}

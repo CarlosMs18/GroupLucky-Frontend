@@ -24,8 +24,8 @@
 <ng-container matColumnDef="acciones">
   <mat-header-cell *matHeaderCellDef> Acciones </mat-header-cell>
   <mat-cell *matCellDef="let element">
-      <mat-icon routerLink="/verMascota/{{ element.id }}" matTooltip="Ver" class="search" fontIcon="search"></mat-icon>
-      <mat-icon (click)="editCategory(element)" matTooltip="Editar" class="edit" fontIcon="edit"></mat-icon>
+      <mat-icon  mat-icon-button color="primary" (click)="viewCategory(element)" matTooltip="Ver" class="search" fontIcon="search"></mat-icon>
+      <mat-icon mat-icon-button color="warn" (click)="editCategory(element)" matTooltip="Editar" class="edit" fontIcon="edit"></mat-icon>
   </mat-cell>
 </ng-container>
 
