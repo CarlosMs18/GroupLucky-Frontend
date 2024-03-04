@@ -3,13 +3,15 @@ import { CommonModule } from '@angular/common';
 import { ToolbarComponent } from './toolbar/toolbar.component';
 import { MaterialModule } from '../material/material.module';
 import { SidenavComponent } from './sidenav/sidenav.component';
+import { SearchFieldComponent } from './search-field/search-field.component';
 
 
 
 @NgModule({
   declarations: [
     ToolbarComponent,
-    SidenavComponent
+    SidenavComponent,
+    SearchFieldComponent
   ],
   exports:[
     ToolbarComponent
