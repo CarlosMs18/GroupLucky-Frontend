@@ -1,0 +1,22 @@
+<mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+  <!-- Columnas de la tabla -->
+  <ng-container matColumnDef="column1">
+    <mat-header-cell *matHeaderCellDef> Columna 1 </mat-header-cell>
+    <mat-cell *matCellDef="let element"> {{element.column1}} </mat-cell>
+  </ng-container>
+  <ng-container matColumnDef="column2">
+    <mat-header-cell *matHeaderCellDef> Columna 2 </mat-header-cell>
+    <mat-cell *matCellDef="let element"> {{element.column2}} </mat-cell>
+  </ng-container>
+  <ng-container matColumnDef="actions">
+    <mat-header-cell *matHeaderCellDef class="actions-header"> Acciones </mat-header-cell>
+    <mat-cell *matCellDef="let element" class="actions-cell">
+      <button mat-icon-button><mat-icon class="edit-icon">edit</mat-icon></button> <!-- Botón de editar -->
+      <button mat-icon-button><mat-icon class="delete-icon">delete</mat-icon></button> <!-- Botón de eliminar -->
+      <button mat-icon-button><mat-icon>more_vert</mat-icon></button> <!-- Botón de más acciones -->
+    </mat-cell>
+  </ng-container>
+  <!-- Definición de las columnas de la tabla -->
+  <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+  <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+</mat-table>
