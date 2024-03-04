@@ -6,6 +6,8 @@ import { MatTableDataSource } from '@angular/material/table';
 import { CategoriesService } from 'src/app/core';
 import { GetCategoryAll } from 'src/app/core/src/models/category/getCategoryAll.model';
 import { ModalCategoryComponent } from '../../components/modal/modal-category/modal-category.component';
+import { CategoryI } from 'src/app/core/src/models/category/category.model';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-category-list',
@@ -48,5 +50,14 @@ export class CategoryListComponent implements OnInit, AfterViewInit {
     }).afterClosed().subscribe(response => {
       if(response == "true") this.getCategoryAll();
     })
+  }
+
+  editCategory(category: CategoryI){
+    this.dialog.open(ModalCategoryComponent,{
+      disableClose : true,
+      data : category
+    }).afterClosed().subscribe(resultado => {
+      if(resultado == "true") this.getCategoryAll();
+    });
   }
 }

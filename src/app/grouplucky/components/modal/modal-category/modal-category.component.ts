@@ -18,7 +18,7 @@ export class ModalCategoryComponent implements OnInit {
   botonAccion:string = "Guardar";
   constructor(
     private modalActual : MatDialogRef<ModalCategoryComponent>,
-    @Inject(MAT_DIALOG_DATA) public datosCategory: GetCategoryAll,
+    @Inject(MAT_DIALOG_DATA) public datosCategory: CategoryI,
     private fb :FormBuilder,
     private _categoryService : CategoriesService,
     private _utilitiesService : UtilitiesService
@@ -29,9 +29,20 @@ export class ModalCategoryComponent implements OnInit {
         description : ["", Validators.required]
       }
     )
+
+    if(this.datosCategory != null){
+      this.tituloAccion = "Editar";
+      this.botonAccion ="Actualizar"
+    }
   }
 
   ngOnInit(): void {
+    if(this.datosCategory != null){
+      this.formularioCategory.patchValue({
+        name : this.datosCategory.name,
+        description : this.datosCategory.description
+      })
+    }
   }
 
 
@@ -42,18 +53,35 @@ export class ModalCategoryComponent implements OnInit {
       name : this.formularioCategory.value.name,
       description : this.formularioCategory.value.description
     }
-    this._categoryService.createCategory(_category).subscribe({
-      next:(data : any) => {
-          console.log(data)
-          if(data.success){
-            this._utilitiesService.mostrarAlerta("La categoria fue agregado con exito","Exito");
+
+    if(this.datosCategory == null){
+      this._categoryService.createCategory(_category).subscribe({
+        next:(data : any) => {
+            if(data.success){
+              this._utilitiesService.mostrarAlerta("La categoria fue agregado con exito","Exito");
+              this.modalActual.close("true");
+            }
+            else{
+              this._utilitiesService.mostrarAlerta("Error al agregar una categoria","Error");
+            }
+        },
+        error : (e) => {}
+      })
+    }else{
+      this._categoryService.updateCategory(_category).subscribe({
+        next :(data : any) => {
+          if(data){
+            this._utilitiesService.mostrarAlerta("El producto fue editado","Exito");
+            this.modalActual.close("true") //cerrar y enviar una informacion alboton que abrio el modal
           }
           else{
-            this._utilitiesService.mostrarAlerta("Error al agregar una categoria","Error");
+            this._utilitiesService.mostrarAlerta("No se pudo editar el producto","Error");
           }
-      },
-      error : (e) => {}
-    })
+        },
+        error :(e) => {}
+      })
+    }
+
   }
 
 
