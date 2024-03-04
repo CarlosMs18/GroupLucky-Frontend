@@ -8,6 +8,7 @@ import { Product } from 'src/app/core/src/models/product/product.model';
 import { ModalProductComponent } from '../../components/modal/modal-product/modal-product.component';
 import Swal from 'sweetalert2';
 import { UtilitiesService } from 'src/app/core/src/services/public/utilities.service';
+import { ViewProductComponent } from '../../components/modal/view-product/view-product.component';
 
 @Component({
   selector: 'app-product-list',
@@ -81,6 +82,15 @@ export class ProductListComponent implements OnInit {
           error : (e) => {}
         })
       }
+    })
+  }
+
+  viewProduct(product: Product){
+    this.dialog.open(ViewProductComponent,{
+      disableClose : true,
+      data : product
+    }).afterClosed().subscribe(response => {
+      if(response == "true") this.getProductsAll();
     })
   }
 }

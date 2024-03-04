@@ -14,16 +14,15 @@ export class ViewCategoryComponent implements OnInit {
   category!: CategoryI;
   constructor(
     private modalActual : MatDialogRef<ModalCategoryComponent>,
-    @Inject(MAT_DIALOG_DATA) public datosCategory : CategoryI,
-    private _categoryService : CategoriesService,
-    private _utilitiesService : UtilitiesService
+    @Inject(MAT_DIALOG_DATA) public datosCategory : CategoryI
+
   ){
 
   }
 
   ngOnInit(): void {
     this.category = this.datosCategory
-    console.log(this.category)
+
   }
 
   back(){

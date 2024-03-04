@@ -1,0 +1,13 @@
+<div class="card custom-card">
+  <div class="card-body">
+    <h5 class="card-title text-center mb-4 field-value">Detalles del Producto</h5>
+    <p class="card-text">Producto: <span class="field-value">{{ product.productName }}</span></p>
+    <p class="card-text">Código: <span class="field-value">{{ product.code }}</span></p>
+    <p class="card-text">Stock Min:  <span class="field-value">{{ product.stockMin }}</span></p>
+    <p class="card-text">Stock Max:<span class="field-value">{{ product.stockMax }}</span></p>
+    <p class="card-text">Precio de venta unitario:<span class="field-value">{{ product.unitSalePrice }}</span></p>
+    <p class="card-text">Categoría:<span class="field-value">{{ product.categoryName }}</span></p>
+    <p class="card-text">Estado: <span class="field-value">{{ product.state }}</span></p>
+    <button class="btn btn-primary mt-2" (click)="back()">Volver</button>
+  </div>
+</div>

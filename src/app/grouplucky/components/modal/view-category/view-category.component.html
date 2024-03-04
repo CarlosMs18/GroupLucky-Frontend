@@ -1,9 +1,11 @@
-<mat-card class="custom-card">
-  <mat-card-title>{{ category.name }}</mat-card-title>
-  <mat-card-content>
-    <p>Description: {{ category.description }}</p>
-  </mat-card-content>
-  <mat-card-actions>
-    <button mat-button color="warn" (click)="back()">Volver</button>
-  </mat-card-actions>
-</mat-card>
+
+
+<div class="card custom-card">
+  <div class="card-body">
+    <h5 class="card-title text-center mb-4 field-value">Detalles de la Categoria</h5>
+    <p class="card-text">Nombre: <span class="field-value">{{ category.name }}</span></p>
+    <p class="card-text">Descripcion: <span class="field-value">{{ category.description }}</span></p>
+
+    <button class="btn btn-primary mt-2" (click)="back()">Volver</button>
+  </div>
+</div>

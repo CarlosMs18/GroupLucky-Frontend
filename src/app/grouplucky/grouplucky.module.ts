@@ -10,6 +10,7 @@ import { ModalProductComponent } from './components/modal/modal-product/modal-pr
 import { ModalCategoryComponent } from './components/modal/modal-category/modal-category.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ViewCategoryComponent } from './components/modal/view-category/view-category.component';
+import { ViewProductComponent } from './components/modal/view-product/view-product.component';
 
 
 
@@ -21,7 +22,8 @@ import { ViewCategoryComponent } from './components/modal/view-category/view-cat
     GroupluckyComponent,
     ModalProductComponent,
     ModalCategoryComponent,
-    ViewCategoryComponent
+    ViewCategoryComponent,
+    ViewProductComponent
   ],
   imports: [
     CommonModule,
