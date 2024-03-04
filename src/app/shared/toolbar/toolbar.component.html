@@ -1,0 +1,56 @@
+<!-- app.component.html -->
+<mat-toolbar color="primary">
+  <button mat-icon-button (click)="toggleSidebar()">
+    <mat-icon>menu</mat-icon>
+  </button>
+  <span>Título del Dashboard</span>
+</mat-toolbar>
+
+<mat-sidenav-container class="sidenav-container">
+  <mat-sidenav #sidenav mode="side" [(opened)]="mostrarSidebar">
+    <mat-nav-list>
+      <a mat-list-item routerLink="/categoria1">
+        <mat-icon class="icon">folder</mat-icon> <!-- Icono de la categoría -->
+        <span>Categoría 1</span>
+      </a>
+      <a mat-list-item routerLink="/categoria2">
+        <mat-icon class="icon">folder</mat-icon> <!-- Icono de la categoría -->
+        <span>Categoría 2</span>
+      </a>
+    </mat-nav-list>
+  </mat-sidenav>
+
+  <mat-sidenav-content>
+    <div class="dashboard-content">
+      <mat-form-field class="search-field" style="width: 300px;">
+        <input matInput placeholder="Buscar">
+        <button mat-button matSuffix>
+          <mat-icon>search</mat-icon>
+        </button>
+      </mat-form-field>
+      <h2>Contenido Principal</h2>
+      <mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+        <!-- Columnas de la tabla -->
+        <ng-container matColumnDef="column1">
+          <mat-header-cell *matHeaderCellDef> Columna 1 </mat-header-cell>
+          <mat-cell *matCellDef="let element"> {{element.column1}} </mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="column2">
+          <mat-header-cell *matHeaderCellDef> Columna 2 </mat-header-cell>
+          <mat-cell *matCellDef="let element"> {{element.column2}} </mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="actions">
+          <mat-header-cell *matHeaderCellDef class="actions-header"> Acciones </mat-header-cell>
+          <mat-cell *matCellDef="let element" class="actions-cell">
+            <button mat-icon-button><mat-icon class="edit-icon">edit</mat-icon></button> <!-- Botón de editar -->
+            <button mat-icon-button><mat-icon class="delete-icon">delete</mat-icon></button> <!-- Botón de eliminar -->
+            <button mat-icon-button><mat-icon>more_vert</mat-icon></button> <!-- Botón de más acciones -->
+          </mat-cell>
+        </ng-container>
+        <!-- Definición de las columnas de la tabla -->
+        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+        <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+      </mat-table>
+    </div>
+  </mat-sidenav-content>
+</mat-sidenav-container>

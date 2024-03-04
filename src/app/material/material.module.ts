@@ -11,6 +11,10 @@ import {MatSidenavModule} from '@angular/material/sidenav';
 import {MatListModule} from '@angular/material/list';
 import {MatCardModule} from '@angular/material/card';
 import {MatSliderModule} from '@angular/material/slider';
+import {MatTableModule} from '@angular/material/table';
+import {MatPaginatorModule} from '@angular/material/paginator';
+import { MatSortModule } from '@angular/material/sort';
+
 @NgModule({
   declarations: [],
   exports: [
@@ -25,10 +29,10 @@ import {MatSliderModule} from '@angular/material/slider';
     MatSidenavModule,
     MatListModule,
     MatCardModule,
-    MatSliderModule
-
-
-
+    MatSliderModule,
+    MatTableModule,
+    MatPaginatorModule,
+    MatSortModule
   ]
 
 })
