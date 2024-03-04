@@ -1,29 +1,29 @@
 .custom-card {
-  width: 400px; /* Ancho personalizado */
-  margin: 20px auto; /* Centra la tarjeta horizontalmente */
-  border-radius: 15px; /* Borde redondeado */
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra */
+  width: 400px;
+  margin: 20px auto;
+  border-radius: 15px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 .card-body {
-  padding: 20px; /* Espacio interno */
+  padding: 20px;
 }
 
 .card-title {
-  font-size: 24px; /* Tamaño de fuente para el título */
+  font-size: 24px;
 }
 
 .card-subtitle {
-  font-size: 18px; /* Tamaño de fuente para el subtítulo */
+  font-size: 18px;
 }
 
 .card-text {
-  margin-bottom: 10px; /* Espacio entre los elementos de texto */
+  margin-bottom: 10px;
 }
 
 .btn-primary {
-  width: 100%; /* Botón ocupa todo el ancho de la tarjeta */
+  width: 100%;
 }
 .field-value {
-  font-weight: bold; /* Hace que el texto sea negrita */
+  font-weight: bold;
 }

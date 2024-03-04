@@ -17,9 +17,10 @@ import { ViewCategoryComponent } from '../../components/modal/view-category/view
 })
 export class CategoryListComponent implements OnInit, AfterViewInit {
   displayedColumns: string[] = ['id', 'name','description','acciones'];
-  dataSource =new MatTableDataSource<GetCategoryAll>();
+  dataInicio : CategoryI[] = [];
+  dataSource = new MatTableDataSource<GetCategoryAll>();
 
-  @ViewChild(MatPaginator) paginator!: MatPaginator
+  @ViewChild(MatPaginator) paginacionTabla! :MatPaginator
   @ViewChild(MatSort) sort!: MatSort;
   constructor(
     private categoriesService : CategoriesService,
@@ -31,11 +32,7 @@ export class CategoryListComponent implements OnInit, AfterViewInit {
     this.getCategoryAll()
   }
   ngAfterViewInit() {
-    this.dataSource.paginator = this.paginator;
-    this.dataSource.sort = this.sort;
-    if(this.dataSource.data.length > 0) {
-      this.paginator._intl.itemsPerPageLabel = 'Items por pagina'
-    }
+    this.dataSource.paginator = this.paginacionTabla;
   }
 
 
