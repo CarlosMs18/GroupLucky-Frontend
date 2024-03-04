@@ -7,7 +7,7 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class TableComponent implements OnInit {
   @Input() dataSource!: any[];
-  displayedColumns: string[] = ['column1', 'column2', 'actions'];
+  @Input() displayedColumns: string[] = [];
   constructor() { }
 
   ngOnInit(): void {

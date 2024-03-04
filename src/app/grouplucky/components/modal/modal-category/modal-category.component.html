@@ -1,0 +1,40 @@
+<h2 mat-dialog-title>{{tituloAccion}} Category</h2>
+
+<mat-dialog-content>
+    <form [formGroup]="formularioCategory">
+
+        <mat-grid-list cols="1" rowHeight="80px">
+            <!--le diremos que slo tendra 1 columna y el alto por fila sera de 80px-->
+            <mat-grid-tile>
+                <mat-form-field appearance="outline">
+                    <mat-label>Name</mat-label>
+                    <input matInput autocomplete="off" formControlName="name">
+                    <mat-icon matSuffix>fit_screen</mat-icon>
+                </mat-form-field>
+            </mat-grid-tile>
+            <mat-grid-tile>
+
+              <mat-form-field appearance="outline">
+                  <mat-label>Description</mat-label>
+                  <input matInput autocomplete="off" formControlName="description">
+                  <mat-icon matSuffix>fit_screen</mat-icon>
+              </mat-form-field>
+          </mat-grid-tile>
+
+
+        </mat-grid-list>
+
+    </form>
+</mat-dialog-content>
+
+
+<mat-dialog-actions align="end"> <!--para que s epueda ainear al final-->
+    <button mat-raised-button mat-dialog-close color="warn">
+        Volver
+    </button>
+
+    <button mat-raised-button color="primary" [disabled]="formularioCategory.invalid"
+        (click)="saveProduct()">
+        {{botonAccion}}
+    </button>
+</mat-dialog-actions>

@@ -1,1 +1,39 @@
-<p>category-list works!</p>
+
+  <mat-card-title>
+    <button mat-raised-button color="primary" (click)="AddCategory()" >
+        <mat-icon mat-list-icon>add</mat-icon>
+        Nueva Categoria
+    </button>
+</mat-card-title>
+
+
+<mat-table [dataSource]="dataSource" class="mat-elevation-z8 mt-3" matSort>
+  <ng-container matColumnDef="id">
+    <mat-header-cell *matHeaderCellDef mat-sort-header> Id </mat-header-cell>
+    <mat-cell *matCellDef="let element"> {{element.id}} </mat-cell>
+</ng-container>
+<ng-container matColumnDef="name">
+  <mat-header-cell *matHeaderCellDef mat-sort-header> Name </mat-header-cell>
+  <mat-cell  *matCellDef="let element"> {{element.name}} </mat-cell>
+</ng-container>
+<ng-container matColumnDef="description">
+  <mat-header-cell *matHeaderCellDef> Description </mat-header-cell>
+  <mat-cell *matCellDef="let element"> {{element.description}} </mat-cell>
+</ng-container>
+
+<ng-container matColumnDef="acciones">
+  <mat-header-cell *matHeaderCellDef> Acciones </mat-header-cell>
+  <mat-cell *matCellDef="let element">
+      <mat-icon routerLink="/verMascota/{{ element.id }}" matTooltip="Ver" class="search" fontIcon="search"></mat-icon>
+      <mat-icon routerLink="/editarMascota/{{ element.id }}" matTooltip="Editar" class="edit" fontIcon="edit"></mat-icon>
+      <mat-icon matTooltip="Eliminar" class="delete" fontIcon="delete"></mat-icon>
+  </mat-cell>
+</ng-container>
+
+
+  <!-- Encabezado de la tabla -->
+  <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+
+  <!-- Fila de datos de la tabla -->
+  <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+</mat-table>

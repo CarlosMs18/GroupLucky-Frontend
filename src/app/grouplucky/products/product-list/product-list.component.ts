@@ -6,7 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./product-list.component.css']
 })
 export class ProductListComponent implements OnInit {
-
+  displayedColumns: string[] = ['Id', 'Nombre del Producto', 'Stock Mínimo', 'Stock Máximo', 'Precio de Venta', 'Categoría', 'Estado', 'Acciones'];
   constructor() { }
 
   ngOnInit(): void {
