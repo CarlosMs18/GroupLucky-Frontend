@@ -37,8 +37,11 @@ export class ProductListComponent implements OnInit, AfterViewInit {
 
   getProductsAll(){
     this._productService.getProductAll().subscribe(products =>{
-      console.log(products)
+
       this.dataSource.data = products
+      if(this.dataSource.data.length > 0){
+        this.paginacionTabla._intl.itemsPerPageLabel = "Productos por página"
+      }
     })
   }
 
@@ -96,4 +99,10 @@ export class ProductListComponent implements OnInit, AfterViewInit {
       if(response == "true") this.getProductsAll();
     })
   }
+
+  aplicarFiltroTabla(event : Event){
+    const filterValue = (event.target as HTMLInputElement).value;
+    this.dataSource.filter = filterValue.trim().toLowerCase();
+  }
+
 }

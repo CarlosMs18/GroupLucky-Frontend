@@ -2,7 +2,7 @@
   <button mat-icon-button (click)="toggleSidebar()">
     <mat-icon>menu</mat-icon>
   </button>
-  <span>Título del Dashboard</span>
+  <span class="fw-bold">DASHBOARD GROUPLUCKY</span>
 </mat-toolbar>
 
 <mat-sidenav-container class="sidenav-container">
@@ -13,7 +13,7 @@
   <mat-sidenav-content>
     <div class="dashboard-content">
       <app-search-field (search)="performSearch($event)"></app-search-field>
-      <h2>Contenido Principal</h2>
+
     <!--   <app-table [dataSource]="dataSource"></app-table> -->
       <router-outlet></router-outlet>
     </div>

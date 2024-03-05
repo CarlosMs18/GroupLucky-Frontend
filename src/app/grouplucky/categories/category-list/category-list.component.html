@@ -1,40 +1,52 @@
-
+<h2 class="fw-bold">TABLA CATEGORIA</h2>
+<div class="d-flex justify-content-between">
+  <mat-form-field class="search-field" style="width: 300px;">
+    <input (keyup)="aplicarFiltroTabla($event)" #input matInput placeholder="Buscar por el nombre de la categoria">
+    <button mat-button matSuffix>
+      <mat-icon>search</mat-icon>
+    </button>
+  </mat-form-field>
   <mat-card-title>
     <button mat-raised-button color="primary" (click)="AddCategory()" >
         <mat-icon mat-list-icon>add</mat-icon>
         Nueva Categoria
     </button>
 </mat-card-title>
+</div>
+
+<mat-card-content>
+  <mat-table [dataSource]="dataSource" class="mat-elevation-z8 mt-3" matSort>
+    <ng-container matColumnDef="id">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Id </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.id}} </mat-cell>
+  </ng-container>
+  <ng-container matColumnDef="name">
+    <mat-header-cell *matHeaderCellDef mat-sort-header> Name </mat-header-cell>
+    <mat-cell  *matCellDef="let element"> {{element.name}} </mat-cell>
+  </ng-container>
+  <ng-container matColumnDef="description">
+    <mat-header-cell *matHeaderCellDef> Description </mat-header-cell>
+    <mat-cell *matCellDef="let element"> {{element.description}} </mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="acciones">
+    <mat-header-cell *matHeaderCellDef> Acciones </mat-header-cell>
+    <mat-cell *matCellDef="let element">
+        <mat-icon  mat-icon-button color="primary" (click)="viewCategory(element)" matTooltip="Ver" class="search" fontIcon="search"></mat-icon>
+        <mat-icon mat-icon-button color="warn" (click)="editCategory(element)" matTooltip="Editar" class="edit" fontIcon="edit"></mat-icon>
+    </mat-cell>
+  </ng-container>
 
 
-<mat-table [dataSource]="dataSource" class="mat-elevation-z8 mt-3" matSort>
-  <ng-container matColumnDef="id">
-    <mat-header-cell *matHeaderCellDef mat-sort-header> Id </mat-header-cell>
-    <mat-cell *matCellDef="let element"> {{element.id}} </mat-cell>
-</ng-container>
-<ng-container matColumnDef="name">
-  <mat-header-cell *matHeaderCellDef mat-sort-header> Name </mat-header-cell>
-  <mat-cell  *matCellDef="let element"> {{element.name}} </mat-cell>
-</ng-container>
-<ng-container matColumnDef="description">
-  <mat-header-cell *matHeaderCellDef> Description </mat-header-cell>
-  <mat-cell *matCellDef="let element"> {{element.description}} </mat-cell>
-</ng-container>
+    <!-- Encabezado de la tabla -->
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
 
-<ng-container matColumnDef="acciones">
-  <mat-header-cell *matHeaderCellDef> Acciones </mat-header-cell>
-  <mat-cell *matCellDef="let element">
-      <mat-icon  mat-icon-button color="primary" (click)="viewCategory(element)" matTooltip="Ver" class="search" fontIcon="search"></mat-icon>
-      <mat-icon mat-icon-button color="warn" (click)="editCategory(element)" matTooltip="Editar" class="edit" fontIcon="edit"></mat-icon>
-  </mat-cell>
-</ng-container>
+    <!-- Fila de datos de la tabla -->
+    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+
+  </mat-table>
+  <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+
+</mat-card-content>
 
 
-  <!-- Encabezado de la tabla -->
-  <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-
-  <!-- Fila de datos de la tabla -->
-  <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
-
-</mat-table>
-<mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>

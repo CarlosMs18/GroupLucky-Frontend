@@ -1,3 +1,17 @@
 mat-icon{
   cursor: pointer;
+  font-weight: bold;
+}
+.mat-header-cell {
+  font-weight: bold;
+  font-size: 16px;
+}
+
+.mat-cell {
+  font-size: 14px;
+}
+
+.mat-row {
+  font-size: 12px;
+  font-weight: bold;
 }

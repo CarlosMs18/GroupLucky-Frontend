@@ -23,6 +23,6 @@ export class GroupluckyComponent implements OnInit {
   }
 
   performSearch(searchTerm: string) {
-    console.log('Realizando búsqueda con el término:', searchTerm);
+
   }
 }

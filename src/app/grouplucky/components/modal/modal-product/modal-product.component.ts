@@ -43,8 +43,6 @@ export class ModalProductComponent implements OnInit{
   }
 
   ngOnInit(): void {
-
-    console.log(this.categoriesList)
     if(this.datosProduct != null){
       this.formularioProducto.patchValue({
         name : this.datosProduct.productName,

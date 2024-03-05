@@ -40,7 +40,6 @@ export class CategoryListComponent implements OnInit, AfterViewInit {
     this.categoriesService.getCategoryAll()
       .subscribe((categories) => {
         this.dataSource.data = categories
-        console.log(categories)
       })
   }
   AddCategory(){
@@ -67,5 +66,10 @@ export class CategoryListComponent implements OnInit, AfterViewInit {
     }).afterClosed().subscribe(resultado => {
       if(resultado == "true") this.getCategoryAll();
     });
+  }
+
+  aplicarFiltroTabla(event : Event){
+    const filterValue = (event.target as HTMLInputElement).value;
+    this.dataSource.filter = filterValue.trim().toLowerCase();
   }
 }
