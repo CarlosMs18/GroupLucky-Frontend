@@ -14,8 +14,13 @@
     <div class="dashboard-content">
       <app-search-field (search)="performSearch($event)"></app-search-field>
 
-    <!--   <app-table [dataSource]="dataSource"></app-table> -->
+      <!--   <app-table [dataSource]="dataSource"></app-table> -->
       <router-outlet></router-outlet>
     </div>
+    <footer class="footer">
+      <!-- Contenido del pie de página -->
+      <p class="text-align-start">GROUPLUCKY-FRONTEND-2024</p>
+    </footer>
   </mat-sidenav-content>
+
 </mat-sidenav-container>
