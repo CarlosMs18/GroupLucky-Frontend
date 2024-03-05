@@ -6,6 +6,10 @@ const routes: Routes = [
     path : 'dashboard',
     loadChildren :() =>
       import('./grouplucky/grouplucky.module').then((m) => m.GroupluckyModule)
+  },
+  {
+    path : '**',
+    redirectTo:'dashboard'
   }
 ];
 

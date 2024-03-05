@@ -16,6 +16,10 @@ const routes: Routes = [
       {
         path :'productList',
         component :ProductListComponent
+      },
+      {
+        path : '**',
+        redirectTo : 'productList'
       }
     ]
   }
