@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
@@ -15,12 +15,11 @@ import { ViewProductComponent } from '../../components/modal/view-product/view-p
   templateUrl: './product-list.component.html',
   styleUrls: ['./product-list.component.css']
 })
-export class ProductListComponent implements OnInit {
- /*  displayedColumns: string[] = ['id','code','name', 'stockmin', 'stockmax', 'unitsalePrice', 'categoria', 'estado', 'Acciones']; */
+export class ProductListComponent implements OnInit, AfterViewInit {
   displayedColumns: string[] = ['id','code','name','stockMin','stockMax','unitSalePrice','categoria','estado','acciones']
   dataSource =new MatTableDataSource<Product>();
 
-  @ViewChild(MatPaginator) paginator!: MatPaginator
+  @ViewChild(MatPaginator) paginacionTabla! :MatPaginator
   @ViewChild(MatSort) sort!: MatSort;
   constructor(
     private _productService :ProductsService,
@@ -30,6 +29,10 @@ export class ProductListComponent implements OnInit {
 
   ngOnInit(): void {
     this.getProductsAll();
+  }
+
+  ngAfterViewInit() {
+    this.dataSource.paginator = this.paginacionTabla;
   }
 
   getProductsAll(){
